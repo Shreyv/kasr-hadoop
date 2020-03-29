@@ -1,0 +1,8 @@
+FOOD:food,delicious,flavor,quality,texture,fresh,ingredients,refreshing,delightful,exquisite,appetizing,tasty,delectable,menu,options,grill,barbeque,buffet,meal,dish,authentic,cooked
+SERVICE:service,friendly,dull,management,helpful,slow,fast,bar,rude
+PRICE:price,$,worth,money,price,cheap,expensive,value,reasonable,affordable,charge,cost,bill
+STAFF:staff,server,waiter,waitress,manager,owner,management,bartender
+AMBIENCE:ambience,atmosphere,environment,interior,exterior,decor,pleasant,aura,music,vibe,feel
+LOCATION:location,parking,locality,downtown,mall,shopping,vicinity,wait,time,drive-through,theatre,close
+RECOMMEND:again,back,try,must,visit,definitely,recommend,suggest
+EXPERIENCE:experience,perfect,good,best,disappoint,fun,enjoy,poor,awesome,bad,surprised,nice,serene,horrible
