@@ -1,11 +1,9 @@
 package util;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  *
@@ -50,6 +48,16 @@ public class KeywordConstant {
         }
 
     };
+
+    public static String getKey(String value) {
+        for (Map.Entry<String, String> entry : keywordMap.entrySet()) {
+            if (entry.getValue().contains(value.toLowerCase())) {
+                return entry.getKey();
+            }
+        }
+        
+        return null;
+    }
 
 //    static {
 //        BufferedReader br = null;
