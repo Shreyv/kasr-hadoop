@@ -17,7 +17,7 @@ import org.apache.hadoop.io.Text;
  * @author shrey
  */
 public class PPKUtil {
-   
+
     private static DecimalFormat df = new DecimalFormat("#.####");
 
     public static String getPPK(String comment) {
@@ -27,7 +27,7 @@ public class PPKUtil {
         String[] words = comment.split(" ");
         HashSet<String> matched = new HashSet<>();
         for (String word : words) {
-            word  = word.replaceAll("[^a-zA-Z]", "");
+            word = word.replaceAll("[^a-zA-Z]", "");
             if (allKeywords.contains(word.toLowerCase())) {
                 for (Map.Entry<String, String> entry : KeywordConstant.keywordMap.entrySet()) {
                     if (entry.getValue().contains(word.toLowerCase())) {
@@ -51,7 +51,7 @@ public class PPKUtil {
         long totalComments = 0;
         List<String> foundKeyWords = new LinkedList<>();
         Set<String> uniqueKeys = new HashSet<>();
-     //    List<Double> result = new LinkedList<>();
+        //    List<Double> result = new LinkedList<>();
         List<String> result = new LinkedList<>();
 
         for (String key : KeywordConstant.keywordMap.keySet()) {
@@ -61,7 +61,7 @@ public class PPKUtil {
         while (comments.hasNext()) {
             String comment = comments.next().toString();
             for (String word : comment.split(" ")) {
-                word  = word.replaceAll("[^a-zA-Z]", "");
+                word = word.replaceAll("[^a-zA-Z]", "");
                 if (allKeywords.contains(word.toLowerCase())) {
                     String key = KeywordConstant.getKey(word);
                     foundKeyWords.add(key);
@@ -71,8 +71,8 @@ public class PPKUtil {
 
             }
 
-             foundKeyWords.add("FOOD");
-             uniqueKeys.add("FOOD");
+            foundKeyWords.add("FOOD");
+            uniqueKeys.add("FOOD");
             for (String k : uniqueKeys) {
                 int count = countMap.get(k);
                 countMap.put(k, count + 1);
@@ -89,7 +89,7 @@ public class PPKUtil {
 
             if (entry.getValue() == 0) {
                 result.add("0.0");
-                
+
             } else {
                 float tf = (float) termFrequencyMap.get(entry.getKey()) / foundKeyWords.size();
                 double idf_div = (double) totalComments / countMap.get(entry.getKey());
@@ -99,6 +99,30 @@ public class PPKUtil {
 
         }
 
-        return String.join(",",result);
+        return String.join(",", result);
     }
+
+    public static double calculateCosineSimilarity(List<String> A, List<String> B) {
+
+        float prod = 0;
+        float Asquare = 0;
+        float Bsquare = 0;
+
+        if (A.size() == B.size()) {
+
+            for (int i = 0; i < A.size(); i++) {
+                prod += (Float.valueOf(A.get(i)) * Float.valueOf(B.get(i)));
+                Asquare += (Float.valueOf(A.get(i)) * Float.valueOf(A.get(i)));
+                Bsquare += (Float.valueOf(B.get(i)) * Float.valueOf(B.get(i)));
+            }
+
+            if (Asquare != 0 && Bsquare != 0) {
+                return prod / (Math.sqrt(Asquare) * Math.sqrt(Bsquare));
+            }
+        }
+
+        return Double.valueOf("0.0");
+
+    }
+
 }
