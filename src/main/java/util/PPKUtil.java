@@ -48,7 +48,8 @@ public class PPKUtil {
 
         Map<String, Integer> countMap = new LinkedHashMap<>();
         HashSet<String> allKeywords = KeywordConstant.allKeywordValues;
-        long totalComments = 0;
+        long totalCommentWords = 0;
+        long totalComment = 0; 
         List<String> foundKeyWords = new LinkedList<>();
         Set<String> uniqueKeys = new HashSet<>();
         //    List<Double> result = new LinkedList<>();
@@ -67,7 +68,7 @@ public class PPKUtil {
                     foundKeyWords.add(key);
                     uniqueKeys.add(key);
                 }
-                totalComments++;
+                totalCommentWords++;
 
             }
 
@@ -79,6 +80,7 @@ public class PPKUtil {
             }
 
             uniqueKeys.clear();
+            totalComment++;
 
         }
 
@@ -92,7 +94,7 @@ public class PPKUtil {
 
             } else {
                 float tf = (float) termFrequencyMap.get(entry.getKey()) / foundKeyWords.size();
-                double idf_div = (double) totalComments / countMap.get(entry.getKey());
+                double idf_div = (double) ((totalComment) / countMap.get(entry.getKey()));
                 double idf = Math.abs(Math.log(idf_div));
                 result.add(df.format(tf * idf));
             }
