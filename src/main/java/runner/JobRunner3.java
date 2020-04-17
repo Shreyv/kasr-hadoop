@@ -12,22 +12,18 @@ import org.apache.hadoop.mapreduce.filecache.DistributedCache;
 import org.apache.hadoop.util.*;
 import reducer.Reducer3;
 
-/**
- *
- * @author shrey
- */
 public class JobRunner3 extends Configured implements Tool {
 
     public int run(String[] args) throws Exception {
 
         if (args.length != 4) {
 
-            System.err.println("Usage: JobRunner3 <input path> <outputpath> <cacheFilesPath>");
+            System.err.println("Usage: JobRunner3 <input path> <outputpath> <cacheFilesPath> <cacheFilesPath>");
             System.exit(-1);
 
         }
 
-        Job job = new Job(getConf(), "Deriving PPK from each user comment for each restaurant");
+        Job job = new Job(getConf(), "Calculating cosine similarity of active user with previous users");
 
         job.setJarByClass(getClass());
 

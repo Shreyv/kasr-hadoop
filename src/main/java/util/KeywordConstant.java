@@ -5,10 +5,7 @@ import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/**
- *
- * @author shrey
- */
+
 public class KeywordConstant {
 
     final static String FOOD = "food,delicious,flavor,quality,texture,fresh,ingredients,refreshing,delightful,exquisite,appetizing,tasty,delectable,menu,options,grill,barbeque,buffet,meal,dish,authentic,cooked,flavourful,taste";

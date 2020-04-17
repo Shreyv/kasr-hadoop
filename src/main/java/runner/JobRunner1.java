@@ -10,10 +10,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.util.*;
 
-/**
- *
- * @author shrey
- */
+
 public class JobRunner1 extends Configured implements Tool {
 
     public int run(String[] args) throws Exception {

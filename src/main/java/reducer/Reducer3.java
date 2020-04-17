@@ -18,10 +18,7 @@ import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.filecache.DistributedCache;
 import util.PPKUtil;
 
-/**
- *
- * @author shrey
- */
+
 public class Reducer3 extends Reducer<Text, Text, Text, Text> {
 
     private Set<String> activeUserPreferenceSet = new HashSet<>();
