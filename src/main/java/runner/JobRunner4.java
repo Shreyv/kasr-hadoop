@@ -1,7 +1,5 @@
 package runner;
 
-import java.net.URI;
-import mapper.Mapper3;
 import mapper.Mapper4;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
@@ -9,15 +7,10 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.Job;
-import org.apache.hadoop.mapreduce.filecache.DistributedCache;
 import org.apache.hadoop.util.*;
-import reducer.Reducer3;
 import reducer.Reducer4;
 
-/**
- *
- * @author shrey
- */
+
 public class JobRunner4 extends Configured implements Tool {
 
     public int run(String[] args) throws Exception {
@@ -29,7 +22,7 @@ public class JobRunner4 extends Configured implements Tool {
 
         }
 
-        Job job = new Job(getConf(), "Deriving PPK from each user comment for each restaurant");
+        Job job = new Job(getConf(), "Getting personalized rating of restaurants");
 
         job.setJarByClass(getClass());
 

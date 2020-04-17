@@ -8,10 +8,7 @@ import java.util.List;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-/**
- *
- * @author shrey
- */
+
 public class Reducer4 extends Reducer<Text, Text, Text, Text> {
 
     private final double threshold = 0.50;

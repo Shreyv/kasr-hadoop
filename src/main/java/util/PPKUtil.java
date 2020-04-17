@@ -12,13 +12,11 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import org.apache.hadoop.io.Text;
 
-/**
- *
- * @author shrey
- */
+
 public class PPKUtil {
 
     private static DecimalFormat df = new DecimalFormat("#.####");
+    public static int TOP_N = 10;
 
     public static String getPPK(String comment) {
 
@@ -38,7 +36,7 @@ public class PPKUtil {
         }
 
         // adding FOOD by default
-        matched.add("FOOD");
+      //  matched.add("FOOD");
 
         return String.join(",", matched);
     }
@@ -72,8 +70,8 @@ public class PPKUtil {
 
             }
 
-            foundKeyWords.add("FOOD");
-            uniqueKeys.add("FOOD");
+          //  foundKeyWords.add("FOOD");
+          //  uniqueKeys.add("FOOD");
             for (String k : uniqueKeys) {
                 int count = countMap.get(k);
                 countMap.put(k, count + 1);
@@ -95,7 +93,7 @@ public class PPKUtil {
             } else {
                 float tf = (float) termFrequencyMap.get(entry.getKey()) / foundKeyWords.size();
                 double idf_div = (double) ((totalComment) / countMap.get(entry.getKey()));
-                double idf = Math.abs(Math.log(idf_div));
+                double idf = Math.abs(Math.log10(idf_div));
                 result.add(df.format(tf * idf));
             }
 

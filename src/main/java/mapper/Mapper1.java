@@ -6,10 +6,6 @@ import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Mapper.Context;
 
-/**
- *
- * @author shrey
- */
 public class Mapper1 extends Mapper<LongWritable, Text, Text, Text> {
 
     @Override
