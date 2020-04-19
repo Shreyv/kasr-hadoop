@@ -1,17 +1,14 @@
 package runner;
 
 import mapper.Mapper4;
-import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.Job;
-import org.apache.hadoop.util.*;
 import reducer.Reducer4;
 
-
-public class JobRunner4 extends Configured implements Tool {
+public class JobRunner4 {
 
     public int run(String[] args) throws Exception {
 
@@ -19,10 +16,11 @@ public class JobRunner4 extends Configured implements Tool {
 
             System.err.println("Usage: JobRunner4 <input path> <outputpath>");
             System.exit(-1);
-
         }
 
-        Job job = new Job(getConf(), "Getting personalized rating of restaurants");
+        Job job = new Job();
+
+        job.setJobName("Getting personalized rating of restaurants");
 
         job.setJarByClass(getClass());
 
@@ -48,8 +46,8 @@ public class JobRunner4 extends Configured implements Tool {
 
     public static void main(String[] args) throws Exception {
 
-        int exitCode = ToolRunner.run(new JobRunner4(), args);
-        System.exit(exitCode);
+        JobRunner4 driver = new JobRunner4();
+        driver.run(args);
 
     }
 
