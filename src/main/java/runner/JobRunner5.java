@@ -13,7 +13,7 @@ import org.apache.hadoop.mapreduce.filecache.DistributedCache;
 import org.apache.hadoop.util.*;
 import reducer.Reducer5;
 
-public class JobRunner5 extends Configured implements Tool {
+public class JobRunner5 {
 
     public int run(String[] args) throws Exception {
 
@@ -24,7 +24,8 @@ public class JobRunner5 extends Configured implements Tool {
 
         }
 
-        Job job = new Job(getConf(), "Selecting top N restaurants");
+        Job job = new Job();
+        job.setJobName("Selecting top N restaurants");
 
         job.setJarByClass(getClass());
 
@@ -51,8 +52,8 @@ public class JobRunner5 extends Configured implements Tool {
 
     public static void main(String[] args) throws Exception {
 
-        int exitCode = ToolRunner.run(new JobRunner5(), args);
-        System.exit(exitCode);
+        JobRunner5 driver = new JobRunner5();
+        driver.run(args);
 
     }
 

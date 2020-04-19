@@ -1,16 +1,14 @@
 package runner;
 
 import mapper.Mapper2;
-import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.Job;
-import org.apache.hadoop.util.*;
 import reducer.Reducer2;
 
-public class JobRunner2 extends Configured implements Tool {
+public class JobRunner2 {
 
     public int run(String[] args) throws Exception {
 
@@ -21,7 +19,9 @@ public class JobRunner2 extends Configured implements Tool {
 
         }
 
-        Job job = new Job(getConf(), "Deriving Preference weight vector of previous users");
+        Job job = new Job();
+
+        job.setJobName("Deriving Preference weight vector of previous users");
 
         job.setJarByClass(getClass());
 
@@ -46,8 +46,8 @@ public class JobRunner2 extends Configured implements Tool {
 
     public static void main(String[] args) throws Exception {
 
-        int exitCode = ToolRunner.run(new JobRunner2(), args);
-        System.exit(exitCode);
+        JobRunner2 driver = new JobRunner2();
+        driver.run(args);
 
     }
 

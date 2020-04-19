@@ -2,17 +2,15 @@ package runner;
 
 import java.net.URI;
 import mapper.Mapper3;
-import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.filecache.DistributedCache;
-import org.apache.hadoop.util.*;
 import reducer.Reducer3;
 
-public class JobRunner3 extends Configured implements Tool {
+public class JobRunner3 {
 
     public int run(String[] args) throws Exception {
 
@@ -23,7 +21,8 @@ public class JobRunner3 extends Configured implements Tool {
 
         }
 
-        Job job = new Job(getConf(), "Calculating cosine similarity of active user with previous users");
+        Job job = new Job();
+        job.setJobName("Calculating cosine similarity of active user with previous users");
 
         job.setJarByClass(getClass());
 
@@ -51,8 +50,8 @@ public class JobRunner3 extends Configured implements Tool {
 
     public static void main(String[] args) throws Exception {
 
-        int exitCode = ToolRunner.run(new JobRunner3(), args);
-        System.exit(exitCode);
+        JobRunner3 driver = new JobRunner3();
+        driver.run(args);
 
     }
 
