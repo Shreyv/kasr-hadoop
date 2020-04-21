@@ -1,0 +1,31 @@
+*************************   KASR-Recommendation *************************
+
+>>>>Prerequisite: 
+
+1) maven 
+2) Hadoop - 2.7.3
+
+
+>>>>Build Instructions:
+
+1) Move into the root folder of the project
+
+2) Run command : mvn clean install
+
+>>>>Data information
+
+Data folder contains the required data as below:
+
+1) apk.csv = current (active) user's preference list
+
+2) restaurant.csv = data of the restaurants (its name, address and rating)
+
+3) reduced_reviews.csv = reduced form of the actual review data of yelp data set.
+
+>>>>Instruction to run:
+
+Step 1 (offline step) : run offline.sh file (sh offline.sh)
+
+Step 2 (online step)  : run deploy.sh file (sh deploy.sh)
+
+Output file (final_output.tsv) will be created in result folder
